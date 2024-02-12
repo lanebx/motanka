@@ -94,6 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "motanka-store:build:production",
+              "serveTarget": "motanka-store:serve:production"
+            },
+            "development": {
+              "buildTarget": "motanka-store:build:development",
+              "serveTarget": "motanka-store:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

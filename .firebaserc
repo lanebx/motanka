@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "motanka-store": {
+      "hosting": {
+        "motanka-store": [
+          "motanka-store"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "motanka-store"
+  }
+}
