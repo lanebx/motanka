@@ -1,20 +1,34 @@
-<div class="header" [ngClass]="{'header--mobile': isMobile()}">
+<div class="header" [ngClass]="{ 'header__menu-opened': isMenuOpen }">
   <div class="container">
-    <div class="header__logo logo">
-      <img src="../../../assets/images/motanka-logo.svg" alt="Logo" />
+    <div class="header__logo header__logo--web">
+      <a href="/"
+        ><img src="../../../assets/images/motanka-logo.svg" alt="Logo"
+      /></a>
     </div>
 
     <nav class="header__nav">
+      <div class="header__item header__item-menu" (click)="toggleMenu()">
+        <img src="../../../assets/images/menu.svg" alt="" />
+      </div>
+
       <ul class="header__list header__list--menu">
-        <li class="header__item">
+        <li class="header__item" (click)="closeMenu()">
           <a href="/shop">Shop</a>
         </li>
-        <li class="header__item"><a href="/blog">Blog</a></li>
-        <li class="header__item"><a href="/about">Our Story</a></li>
+
+        <li class="header__item" (click)="closeMenu()">
+          <a href="/blog">Blog</a>
+        </li>
+
+        <li class="header__item" (click)="closeMenu()">
+          <a href="/about">Our Story</a>
+        </li>
       </ul>
 
-      <div class="header__logo--mobile header__logo logo">
-        <img src="../../../assets/images/motanka-logo.svg" alt="Logo" />
+      <div class="header__logo header__logo--mobile">
+        <a href="/"
+          ><img src="../../../assets/images/motanka-logo.svg" alt="Logo"
+        /></a>
       </div>
 
       <ul class="header__list header__list--icons">
@@ -23,6 +37,7 @@
         >
           <img src="../../../assets/images/search.svg" alt="" />
         </li>
+
         <li class="header__item">
           <img src="../../../assets/images/bag.svg" alt="" />
         </li>
@@ -31,6 +46,10 @@
           <img src="../../../assets/images/avatar.svg" alt="" />
         </li>
       </ul>
+
+      <div class="header__item header__item-close" (click)="toggleMenu()">
+        <img src="../../../assets/images/close.svg" alt="" />
+      </div>
     </nav>
   </div>
 </div>

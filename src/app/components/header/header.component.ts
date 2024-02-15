@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,11 +6,22 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  isMobile(): boolean {
-        return window.innerWidth < 900; // Примерный порог для мобильных устройств
-    }
+  isMenuOpen: boolean = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+  // решилось с помощью препроцесора, но если на ts - то так 
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.isMenuOpen = window.innerWidth < 900;
+  // }
 
 }

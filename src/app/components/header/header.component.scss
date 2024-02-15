@@ -1,19 +1,26 @@
+@import "../../../styles.scss";
+
 .header {
+  background-color: $color-primary-white;
+
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 24px;
+    padding: 16px 24px;
   }
 
   &__nav {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 24px;
   }
 
   &__list {
     display: flex;
     gap: 24px;
+
   }
 
   &__item {
@@ -21,18 +28,76 @@
       padding-left: 24px;
       border-left: 1px solid black;
     }
+
+    &-menu {
+      display: none;
+    }
+
+    &-close {
+      display: none;
+    }
   }
 
   &__logo {
+    display: block;
+
     &--mobile {
       display: none;
     }
   }
 }
 
-.header--mobile {
-  background-color: rebeccapurple;
-  .header__logo--mobile {
-    display: block;
+@media screen and (max-width: 900px) {
+  .header__menu-opened {
+    height: 100vh;
+
+    .header__list--icons {
+      display: none;
+    }
+
+    .header__item-menu {
+      display: none;
+    }
+
+    .header__item-close {
+      display: block;
+    }
+
+    .header__list--menu {
+      display: flex;
+      flex-direction: column;
+      font-size: large;
+
+      position: absolute;
+      top: 72px;
+
+      gap: 24px;
+    }
+  }
+
+  .header {
+    &__nav {
+      width: 100%;
+    }
+
+    &__list--menu {
+      display: none;
+    }
+
+    &__item-menu {
+      display: block;
+    }
+
+    &__item-search--mobile {
+      display: none;
+    }
+
+    &__logo--mobile {
+      display: block;
+    }
+
+    &__logo--web {
+      display: none;
+    }
   }
 }
