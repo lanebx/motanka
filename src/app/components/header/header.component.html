@@ -1,0 +1,36 @@
+<div class="header" [ngClass]="{'header--mobile': isMobile()}">
+  <div class="container">
+    <div class="header__logo logo">
+      <img src="../../../assets/images/motanka-logo.svg" alt="Logo" />
+    </div>
+
+    <nav class="header__nav">
+      <ul class="header__list header__list--menu">
+        <li class="header__item">
+          <a href="/shop">Shop</a>
+        </li>
+        <li class="header__item"><a href="/blog">Blog</a></li>
+        <li class="header__item"><a href="/about">Our Story</a></li>
+      </ul>
+
+      <div class="header__logo--mobile header__logo logo">
+        <img src="../../../assets/images/motanka-logo.svg" alt="Logo" />
+      </div>
+
+      <ul class="header__list header__list--icons">
+        <li
+          class="header__item header__item-search header__item-search--mobile"
+        >
+          <img src="../../../assets/images/search.svg" alt="" />
+        </li>
+        <li class="header__item">
+          <img src="../../../assets/images/bag.svg" alt="" />
+        </li>
+
+        <li class="header__item">
+          <img src="../../../assets/images/avatar.svg" alt="" />
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

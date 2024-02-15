@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans";
+}
+
+main {
+    height: calc(100vh - 60px);
+}
+
+ul {
+  list-style-type: none; /* Убираем маркеры */
+  padding: 0; /* Убираем внутренние отступы */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.1);
+}
