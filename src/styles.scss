@@ -1,6 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
-$color-primary-white: #fff;
+// variables
+$light-main-accent: #a18a68;
+$light-main-white: #ffffff;
+$light-main-black: #000000;
+
+$light-neutral-dark-gray: #707070;
+$light-neutral-dark-gray: #d8d8d8;
+$light-neutral-light-gray: #efefef;
+
+$light-service-errors: #d82700;
+
+// mixin
+@mixin title {
+  font-family: "DM Sans";
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 43px;
+}
+
+@mixin error {
+  color: #d82700;
+
+  font-family: "DM Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
 
 * {
   box-sizing: border-box;
@@ -10,6 +39,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "DM Sans";
+  font-size: 16px;
+  background: $light-main-white;
 }
 
 main {
@@ -18,7 +49,7 @@ main {
   display: flex;
   justify-content: center; /* Центрирование по горизонтали */
   align-items: center; /* Центрирование по вертикали */
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
 }
 
 header {
@@ -28,6 +59,7 @@ header {
   top: 0;
   background-color: #fff;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 ul {
@@ -54,8 +86,10 @@ p {
   padding: 0;
 }
 
-// временный стиль - УДАЛИТЬ после заполнения файлов
-//
-p {
-  font-size: 3rem;
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
 }

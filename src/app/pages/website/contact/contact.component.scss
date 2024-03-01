@@ -1,0 +1,93 @@
+@import "../../../../styles.scss";
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+.contact {
+  padding: 24px;
+
+  &__title {
+    margin-bottom: 36px;
+    @include title;
+    text-align: center;
+  }
+
+  &__sub-title {
+    text-align: center;
+    margin-bottom: 64px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  &__name-group {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+
+    .form__particle {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+
+  .form__particle {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__input {
+    padding: 12px 0;
+    border: none;
+    font-size: 16px;
+    border-bottom: 2px solid $light-neutral-dark-gray;
+    outline: none;
+  }
+
+  &__label {
+    @include error;
+    position: absolute;
+    bottom: -20px;
+  }
+
+  &__button {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 4px;
+    background: $light-main-black;
+    color: $light-main-white;
+    font-size: 16px;
+    font-style: normal;
+    border: none;
+    cursor: pointer;
+
+    &:disabled {
+      background: $light-neutral-dark-gray;
+    }
+  }
+}
+
+.success-msg,
+.error-msg {
+  position: relative;
+  left: 0;
+  width: 100%;
+  padding: 10px 24px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.error-msg {
+  color: #d8000c;
+  background-color: #ffbaba;
+}
+
+.success-msg {
+  color: #270;
+  background-color: #dff2bf;
+}

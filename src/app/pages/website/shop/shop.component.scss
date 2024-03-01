@@ -1,0 +1,28 @@
+.shop {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 65px);
+  justify-content: center;
+
+  &__filter {
+    border: 1px solid black;
+    display: block;
+    width: 30%;
+    max-width: 400px;
+    padding: 16px;
+  }
+
+  &__list {
+    border: 1px solid black;
+    display: block;
+    width: 70%;
+    max-width: 1200px;
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .shop {
+    flex-direction: column;
+  }
+}

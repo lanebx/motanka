@@ -1,0 +1,112 @@
+<div *ngIf="isSubmitted" class="success-msg">
+  <i class="fa fa-check"></i>
+  Your message has been delivered, expect a response within 2 business days
+</div>
+
+<div *ngIf="isRejected" class="error-msg">
+  <i class="fa fa-times-circle"></i>
+  The message was not delivered, please try again
+</div>
+
+<div class="contact">
+  <div class="contact__info">
+    <h1 class="contact__title">Contact Us</h1>
+    <h2 class="contact__sub-title">
+      Say Hello send us your thoughts about our products or share your ideas
+      with our Team!
+    </h2>
+  </div>
+
+  <form
+    class="contact__form form"
+    [formGroup]="contactUsControl"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+    <div class="form__name-group">
+      <div class="form__particle">
+        <input
+          class="form__input"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+        <label
+          *ngIf="
+            contactUsControl.get('firstName')?.invalid &&
+            (contactUsControl.get('firstName')?.dirty ||
+              contactUsControl.get('firstName')?.touched)
+          "
+          class="form__label"
+          for="firstName"
+          >field is empty</label
+        >
+      </div>
+
+      <div class="form__particle">
+        <input
+          class="form__input"
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+        <label
+          *ngIf="
+            contactUsControl.get('lastName')?.invalid &&
+            (contactUsControl.get('lastName')?.dirty ||
+              contactUsControl.get('lastName')?.touched)
+          "
+          class="form__label"
+          for="lastName"
+          >field is empty</label
+        >
+      </div>
+    </div>
+
+    <div class="form__particle">
+      <input
+        class="form__input"
+        id="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+      <label
+        *ngIf="
+          contactUsControl.get('email')?.invalid &&
+          (contactUsControl.get('email')?.dirty ||
+            contactUsControl.get('email')?.touched)
+        "
+        class="form__label"
+        for="email"
+        >incorrect email</label
+      >
+    </div>
+
+    <div class="form__particle">
+      <input
+        class="form__input"
+        id="message"
+        formControlName="message"
+        placeholder="Message"
+      />
+      <label
+        *ngIf="
+          contactUsControl.get('message')?.invalid &&
+          (contactUsControl.get('message')?.dirty ||
+            contactUsControl.get('message')?.touched)
+        "
+        class="form__label"
+        for="message"
+        >message is empty</label
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="form__button"
+      [disabled]="!contactUsControl.valid"
+    >
+      SEND
+    </button>
+  </form>
+</div>
