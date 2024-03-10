@@ -1,5 +1,4 @@
 @import "../../../../styles.scss";
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
 .contact {
   padding: 24px;
@@ -46,7 +45,7 @@
     padding: 12px 0;
     border: none;
     font-size: 16px;
-    border-bottom: 2px solid $light-neutral-dark-gray;
+    border-bottom: 2px solid $color-neutral-dark-gray;
     outline: none;
   }
 
@@ -56,38 +55,46 @@
     bottom: -20px;
   }
 
+  &__warning {
+    padding-top: 8px;
+  }
+
   &__button {
     padding-top: 16px;
     padding-bottom: 16px;
     border-radius: 4px;
-    background: $light-main-black;
-    color: $light-main-white;
+    background: $color-main-black;
+    color: $color-main-white;
     font-size: 16px;
     font-style: normal;
     border: none;
     cursor: pointer;
 
     &:disabled {
-      background: $light-neutral-dark-gray;
+      background: $color-neutral-dark-gray;
     }
   }
 }
 
-.success-msg,
-.error-msg {
+.message {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   left: 0;
   width: 100%;
-  padding: 10px 24px;
-  border-radius: 3px 3px 3px 3px;
-}
+  padding: 20px 24px;
+  border-top: 2px solid $color-main-accent;
+  background-color: $color-neutral-light-gray;
 
-.error-msg {
-  color: #d8000c;
-  background-color: #ffbaba;
-}
+  &__container {
+    display: flex;
+  }
 
-.success-msg {
-  color: #270;
-  background-color: #dff2bf;
+  &__text {
+    padding-left: 8px;
+  }
+
+  &__link {
+    color: $color-main-accent;
+  }
 }

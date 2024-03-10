@@ -1,15 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
 // variables
-$light-main-accent: #a18a68;
-$light-main-white: #ffffff;
-$light-main-black: #000000;
+$color-main-accent: #a18a68;
+$color-main-white: #ffffff;
+$color-main-black: #000000;
 
-$light-neutral-dark-gray: #707070;
-$light-neutral-dark-gray: #d8d8d8;
-$light-neutral-light-gray: #efefef;
+$color-neutral-dark-gray: #707070;
+$color-neutral-gray: #d8d8d8;
+$color-neutral-light-gray: #efefef;
 
-$light-service-errors: #d82700;
+$color-service-errors: #d82700;
 
 // mixin
 @mixin title {
@@ -40,7 +41,7 @@ body {
   padding: 0;
   font-family: "DM Sans";
   font-size: 16px;
-  background: $light-main-white;
+  background: $color-main-white;
 }
 
 main {
@@ -59,7 +60,7 @@ header {
   top: 0;
   background-color: #fff;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 3;
 }
 
 ul {

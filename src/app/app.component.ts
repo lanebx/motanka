@@ -17,5 +17,13 @@ import { CommonModule } from '@angular/common';
   
 export class AppComponent {
   title = 'motanka-store';
+}
 
+export interface Product {
+  id?: string;
+  name: string;
+  size: string;
+  price: number;
+  img: string;
+  type: string;
 }

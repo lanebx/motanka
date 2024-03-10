@@ -32,6 +32,7 @@ export class ContactComponent implements OnInit {
   contactUsControl!: FormGroup;
   isSubmitted: Boolean = false;
   isRejected: Boolean = false;
+  submittedstr: string = "Your message has been delivered, expect a response within 2 business days";
   private firestore: Firestore = inject(Firestore); // inject Cloud Firestore
   // contactRequests$: Observable<ContactRequests[]>;
 
@@ -62,17 +63,20 @@ export class ContactComponent implements OnInit {
           console.log('Form submitted successfully!');
           this.contactUsControl.reset();
           this.isSubmitted = true;
+          this.submittedstr = "Your message has been delivered, expect a response within 2 business days";
+
 
           setTimeout(() => {
             this.isSubmitted = false;
-          }, 5000);
+          }, 3000);
         })
         .catch((error) => {
           console.error('Error submitting form:', error);
           this.isRejected = true;
+          this.submittedstr = "The message was not delivered, please try again"
           setTimeout(() => {
             this.isRejected = false;
-          }, 5000); // 15 секунд в миллисекундах
+          }, 3000); // 15 секунд в миллисекундах
         });
     } else {
       console.log(

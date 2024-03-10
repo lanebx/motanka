@@ -1,0 +1,96 @@
+@import "../../../../styles.scss";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+  padding-top: 60px;
+
+  &__article {
+    display: flex;
+    gap: 40px;
+
+    .container-left,
+    .container-right {
+      // flex-grow: 1;
+      display: flex;
+      gap: 40px;
+    }
+
+    .container-left {
+      flex-direction: row;
+    }
+
+    .container-right {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  &__purchase-block {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__button {
+    border-radius: 4px;
+    border: 1px solid $color-main-black;
+    background: $color-main-white;
+    width: 100%;
+    padding: 16px;
+  }
+
+  &__name {
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+
+  &__price {
+    color: $color-main-accent;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px; /* 130% */
+    text-transform: capitalize;
+  }
+
+  .product__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .image-container {
+      max-width: 120px;
+      max-height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+
+  .image-container {
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%; /* Заполнить всю ширину контейнера */
+    height: auto; /* Автоматически вычислить высоту, чтобы соответствовать пропорциям */
+    object-fit: cover;
+  }
+}

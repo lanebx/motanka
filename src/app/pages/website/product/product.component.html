@@ -1,0 +1,93 @@
+<app-notification [submittedstr]="submittedstr" [isSubmitted]="isSubmitted" [link]="'wishlist'"></app-notification>
+
+<div class="product" *ngIf="product$ | async as product">
+  <article class="product__article">
+    <div class="container-left">
+      <ul class="product__photos">
+        <li class="image-container">
+          <img class="product__image" [src]="product.img" alt="Product Image" />
+        </li>
+        <li class="image-container">
+          <img class="product__image" [src]="product.img" alt="Product Image" />
+        </li>
+        <li class="image-container">
+          <img class="product__image" [src]="product.img" alt="Product Image" />
+        </li>
+        <li class="image-container">
+          <img class="product__image" [src]="product.img" alt="Product Image" />
+        </li>
+      </ul>
+
+      <div class="image-container">
+        <img class="product__image" [src]="product.img" alt="Product Image" />
+      </div>
+    </div>
+
+    <div class="container-right">
+      <div class="product__main-info">
+        <h1 class="product__name">Motanka doll {{ product.name }}</h1>
+        <p class="product__price">Price: ${{ product.price }}</p>
+        <p class="product__size">Size: {{ product.size }}</p>
+      </div>
+
+      <div class="product__main-info">
+        <p class="product__description">
+          This is a traditional Ukrainian doll, handmade using natural
+          materials.
+        </p>
+
+        <div class="product__purchase-block">
+          <div (click)="toggleFavorite()">
+            <ng-container *ngIf="!isInFavorite">
+              <!-- пустое сердце -->
+              <svg
+                width="24"
+                height="24"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181"
+                />
+              </svg>
+            </ng-container>
+            <ng-container *ngIf="isInFavorite">
+              <!-- заполненное сердце -->
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"
+                />
+              </svg>
+            </ng-container>
+          </div>
+
+          <button class="product__button">ADD TO CART</button>
+        </div>
+      </div>
+
+      <p class="product__type">Type: {{ product.type }}</p>
+    </div>
+  </article>
+
+  <div class="product__info">
+    <h3>Features:</h3>
+    <ul>
+      <li>
+        <strong>Manufacturing:</strong> The doll is made of linen fabric,
+        threads, and decorated with a wreath of artificial flowers.
+      </li>
+      <li>
+        <strong>Clothing:</strong> The motanka is dressed in a traditional
+        Ukrainian shirt (vyshyvanka) and skirt.
+      </li>
+      <li>
+        <strong>Face:</strong> The doll's face is not drawn, which is a
+        characteristic feature of motankas. Each doll is manually decorated with
+        thread patterns.
+      </li>
+      <li><strong>Handmade:</strong> Each doll is a unique handmade work.</li>
+    </ul>
+  </div>
+
+  <div class="product__similar"></div>
+</div>
