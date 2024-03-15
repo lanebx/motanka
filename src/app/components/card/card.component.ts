@@ -14,7 +14,7 @@ import { LoaderComponent } from "../loader/loader.component";
 export class CardComponent {
   @Input() product?: Product;
   
-  isLoaded: boolean = false;
+  isLoaded: boolean = true;
 
   constructor() {
     console.log("CardComponent here ", this.product?.id);

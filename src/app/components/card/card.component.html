@@ -1,4 +1,6 @@
 <a *ngIf="product" [routerLink]="['/product', product.id]">
+  <app-loader *ngIf="isLoaded"></app-loader>
+
   <article class="article">
     <div class="image-container">
       <svg
@@ -22,15 +24,17 @@
         />
       </svg>
       <img
+        
         class="article__image"
-        src="{{ product.img }}"
+        src="{{ product.img[0] }}"
         alt=""
-        (load)="isLoaded = true"
+        (load)="isLoaded = false"
       />
-      <app-loader [isLoaded]="!isLoaded"></app-loader>
     </div>
 
-    <div class="article__name">Motanka doll {{ product.name }}</div>
+    <div class="article__name">
+      {{ product.type | titlecase }} {{ product.name }}
+    </div>
 
     <div class="article__price">$ {{ product.price }},00</div>
   </article>
