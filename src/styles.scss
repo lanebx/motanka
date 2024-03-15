@@ -21,6 +21,17 @@ $color-service-errors: #d82700;
   line-height: 43px;
 }
 
+@mixin wishlist-text {
+  font-family: "DM Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+
+ @media screen and (max-width: 650px) {
+     font-size: 14px;
+  }
+}
+
 @mixin error {
   color: #d82700;
 

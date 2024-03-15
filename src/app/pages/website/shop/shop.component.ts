@@ -11,6 +11,7 @@ import { getDocs } from 'firebase/firestore';
 import {
   BehaviorSubject,
   Observable,
+  Subject,
   combineLatest,
   map,
   switchMap,
@@ -31,8 +32,9 @@ export class ShopComponent {
   products$?: Observable<Product[]>;
   filteredProducts$: Observable<Product[]>;
   isLoading: boolean = true;
-  isTypeDropdownOpen: boolean = true;
-  isPriceDropdownOpen: boolean = true;
+  isTypeDropdownHidden: boolean = true;
+  isPriceDropdownHidden: boolean = true;
+  isEmpty: boolean = false;
 
   selectedType$: BehaviorSubject<string | undefined> = new BehaviorSubject<
     string | undefined
@@ -40,6 +42,8 @@ export class ShopComponent {
 
   sortDirection$: BehaviorSubject<'ascending' | 'descending'> =
     new BehaviorSubject<'ascending' | 'descending'>('ascending');
+
+  selectedAll$ = new BehaviorSubject<boolean>(false);
 
   searchQuery$: BehaviorSubject<string | undefined> = new BehaviorSubject<
     string | undefined
@@ -52,9 +56,15 @@ export class ShopComponent {
       this.selectedType$,
       this.sortDirection$,
       this.searchQuery$,
+      this.selectedAll$,
     ]).pipe(
-      map(([selectedType, sortDirection, searchQuery]) => {
+      map(([selectedType, sortDirection, searchQuery, selectedAll]) => {
         let filteredProducts = this.localProducts;
+
+        if (selectedAll) {
+          this.selectedAll$.next(false);
+          return filteredProducts;
+        }
 
         if (selectedType) {
           filteredProducts = filteredProducts.filter(
@@ -69,10 +79,13 @@ export class ShopComponent {
         }
 
         if (searchQuery) {
-          filteredProducts = filteredProducts.filter((product) =>
-            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+          filteredProducts = filteredProducts.filter(
+            (product) =>
+              product.name &&
+              product.name.toLowerCase().includes(searchQuery.toLowerCase())
           );
         }
+        this.isEmpty = filteredProducts.length === 0;
 
         return filteredProducts;
       })
@@ -95,25 +108,42 @@ export class ShopComponent {
   }
 
   toggleTypeDropdown() {
-    this.isTypeDropdownOpen = !this.isTypeDropdownOpen;
+    this.isTypeDropdownHidden = !this.isTypeDropdownHidden;
+    this.isPriceDropdownHidden = true;
   }
 
   togglePriceDropdown() {
-    this.isPriceDropdownOpen = !this.isPriceDropdownOpen;
+    this.isPriceDropdownHidden = !this.isPriceDropdownHidden;
+    this.isTypeDropdownHidden = true;
   }
 
   setType(type: string) {
-    this.isTypeDropdownOpen = false; // Устанавливаем isTypeDropdownOpen в false для закрытия выпадающего списка
-    this.selectedType$.next(type); // Устанавливаем выбранный элемент
+    this.isTypeDropdownHidden = false;
+    this.selectedType$.next(type);
   }
 
   setPrice(direction: 'ascending' | 'descending') {
-    this.isPriceDropdownOpen = false; // Устанавливаем isTypeDropdownOpen в false для закрытия выпадающего списка
+    this.isPriceDropdownHidden = false;
     this.sortDirection$.next(direction);
+  }
+
+  clearFilter() {
+    console.log('Clear filter function called');
+    this.selectedAll$.next(true);
+    this.selectedType$.next(undefined); // Сброс типа до значения по умолчанию
+    this.sortDirection$.next('ascending'); // Сброс направления сортировки до значения по умолчанию
+    this.searchQuery$.next(undefined);
+    this.isEmpty = false;
+    this.isTypeDropdownHidden = true;
+    this.isPriceDropdownHidden = true;
+
+    console.log('selectedAll$ value:', this.selectedAll$.value);
   }
 
   handleSearchInput(event: Event) {
     let target = event.target as HTMLInputElement;
     this.searchQuery$.next(target.value);
+    this.isTypeDropdownHidden = true;
+    this.isPriceDropdownHidden = true;
   }
 }

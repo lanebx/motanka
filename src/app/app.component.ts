@@ -24,6 +24,8 @@ export interface Product {
   name: string;
   size: string;
   price: number;
-  img: string;
+  img: string[];
   type: string;
+  status: string;
 }
+

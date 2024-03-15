@@ -1,6 +1,12 @@
 @import "../../../../styles.scss";
 
 .product {
+  @media screen and (max-width: 900px) {
+    padding: 16px;
+    padding-top: 40px;
+  }
+
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 65px;
@@ -10,11 +16,31 @@
     display: flex;
     gap: 40px;
 
+    @media screen and (min-width: 650px) and (max-width: 900px) {
+      gap: 24px;
+    }
+
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+    }
+
     .container-left,
     .container-right {
-      // flex-grow: 1;
       display: flex;
       gap: 40px;
+      width: 100%;
+
+      @media screen and (max-width: 900px) {
+        gap: 24px;
+      }
+
+      @media screen and (max-width: 650px) {
+        width: calc(100vw - 32px);
+      }
+
+      @media screen and (min-width: 650px) and (max-width: 900px) {
+        width: calc((100vw - 55px) / 2);
+      }
     }
 
     .container-left {
@@ -24,6 +50,8 @@
     .container-right {
       flex-direction: column;
       justify-content: space-between;
+
+      max-width: 500px;
     }
   }
 
@@ -32,12 +60,21 @@
     flex-direction: column;
 
     gap: 16px;
+
+    @media screen and (max-width: 900px) {
+      gap: 8px;
+    }
   }
 
   &__purchase-block {
     display: flex;
     gap: 24px;
     align-items: center;
+
+    .add-to-favorite {
+      padding: 2px;
+      cursor: pointer;
+    }
   }
 
   &__button {
@@ -46,6 +83,18 @@
     background: $color-main-white;
     width: 100%;
     padding: 16px;
+    max-width: 380px;
+
+    cursor: pointer;
+
+    &:hover {
+      background: $color-main-black;
+      color: $color-main-white;
+    }
+
+    @media screen and (max-width: 900px) {
+      padding: 10px;
+    }
   }
 
   &__name {
@@ -54,19 +103,64 @@
     font-style: normal;
     font-weight: 500;
     line-height: 26px;
+
+    @media screen and (max-width: 900px) {
+      font-size: 20px;
+      font-weight: 400;
+    }
   }
 
   &__price {
     color: $color-main-accent;
     font-family: "DM Sans";
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 26px; /* 130% */
     text-transform: capitalize;
+
+    @media screen and (max-width: 900px) {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .product__photos--mobile {
+    @media (min-width: 900px) {
+      display: none;
+    }
+
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+
+    .product__image {
+      width: calc((100vw - 55px));
+      height: calc((100vw - 55px));
+
+      @media screen and (min-width: 650px) and (max-width: 900px) {
+        width: calc((100vw - 55px) / 2);
+        height: calc((100vw - 55px) / 2);
+      }
+    }
+
+    &::-webkit-scrollbar {
+      height: 4px;
+      background-color: $color-neutral-light-gray;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-neutral-dark-gray;
+      border-radius: 4px;
+    }
   }
 
   .product__photos {
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -74,23 +168,76 @@
     .image-container {
       max-width: 120px;
       max-height: 120px;
+
+      width: 8.5vw;
+      height: 8.5vw;
+
+      min-width: 80px;
+      min-height: 80px;
+
       border-radius: 8px;
+
       overflow: hidden;
       position: relative;
     }
-  }
-
-  .image-container {
-    max-width: 500px;
-    max-height: 500px;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
   }
 
   &__image {
     width: 100%; /* Заполнить всю ширину контейнера */
     height: auto; /* Автоматически вычислить высоту, чтобы соответствовать пропорциям */
     object-fit: cover;
+    border-radius: 8px;
+
+    cursor: pointer;
   }
+}
+
+.main-image-container {
+  max-width: 500px;
+  max-height: 500px;
+
+  width: 36vw;
+  height: 36vw;
+
+  border-radius: 8px;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.hidden {
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media screen and (max-width: 650px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+::ng-deep .ngxImageZoomContainer {
+  width: 100% !important; /* Заполнить всю ширину контейнера */
+  height: auto; /* Автоматически вычислить высоту, чтобы соответствовать пропорциям */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid $color-neutral-gray;
+
+  cursor: pointer;
+}
+
+::ng-deep .ngxImageZoomThumbnail {
+  width: 100% !important; /* Заполнить всю ширину контейнера */
+  height: auto; /* Автоматически вычислить высоту, чтобы соответствовать пропорциям */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid $color-neutral-gray;
+
+  cursor: pointer;
 }

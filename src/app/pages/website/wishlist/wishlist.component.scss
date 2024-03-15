@@ -1,0 +1,137 @@
+@import "../../../../styles.scss";
+
+.wishlist {
+  @media screen and (max-width: 900px) {
+    padding: 16px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 900px;
+  width: 90vw;
+  padding: 24px;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
+
+  &__table {
+    border-collapse: collapse;
+  }
+
+  &__title {
+    font-family: "DM Sans";
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 43px;
+    text-align: center;
+  }
+}
+
+.item {
+  &__price {
+    color: $color-neutral-dark-gray;
+  }
+
+  &__status {
+    color: $color-neutral-dark-gray;
+  }
+
+  &__name {
+    @include wishlist-text;
+  }
+
+  &__cross {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    .link {
+      color: $color-main-white;
+      background-color: $color-main-black;
+      width: 100%;
+      border: 1px solid $color-main-black;
+
+      padding: 16px 24px;
+      border-radius: 4px;
+
+      @media screen and (min-width: 650px) and (max-width: 900px) {
+        padding: 14px 16px;
+      }
+
+      @media screen and (max-width: 650px) {
+        padding: 8px;
+      }
+
+      &:hover {
+        color: $color-main-black;
+        background-color: $color-main-white;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%; /* Заполнить всю ширину контейнера */
+    height: auto; /* Автоматически вычислить высоту, чтобы соответствовать пропорциям */
+    object-fit: cover;
+  }
+}
+
+th,
+td {
+  @include wishlist-text;
+
+  padding: 28px;
+  border: 1px solid $color-neutral-gray;
+
+  @media screen and (min-width: 650px) and (max-width: 900px) {
+    padding: 16px;
+  }
+
+  @media screen and (max-width: 650px) {
+    padding: 8px;
+  }
+}
+
+td,
+th {
+  text-align: center;
+}
+
+.img-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.container-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+
+    .img-container {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+
+      overflow: hidden;
+    }
+  }
+}
+
+.hidden-mobile {
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
+}

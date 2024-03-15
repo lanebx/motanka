@@ -2,6 +2,11 @@
 
 .shop {
   padding: 24px;
+
+  @media screen and (max-width: 900px) {
+    padding: 16px;
+  }
+
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -19,18 +24,17 @@
 
   &__list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
     gap: 24px;
-    // border: 1px solid $color-main-black;
     width: 75%;
     max-width: 1200px;
-    // padding: 16px;
   }
 
   .container {
     display: flex;
     flex-direction: row;
+    gap: 24px;
   }
 
   @media screen and (max-width: 900px) {
@@ -67,10 +71,10 @@
 .shop__item {
   padding-bottom: 4px;
 
-  width: calc((100% - (24px * 4)) / 3);
+  width: calc((100vw - (24px * 5) - 25vw) / 3);
 
   @media screen and (max-width: 900px) {
-    width: calc((100vw - (24px * 3)) / 2);
+    width: calc((100vw - (16px * 2 + 24px)) / 2);
   }
 }
 
@@ -79,7 +83,6 @@
   flex-direction: column;
   gap: 16px;
   width: 25%;
-  max-width: 400px;
 
   &__title {
     text-align: center;
@@ -126,7 +129,7 @@
 
   &__item {
     font-size: 16px;
-    width: calc((100vw - (64px)) / 4);
+    width: calc((100vw - (64px)) / 5);
     min-width: 120px;
     padding: 10px 0;
     border: 1px solid $color-neutral-light-gray;
@@ -189,9 +192,41 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
 
     &:hover {
       background-color: $color-neutral-light-gray;
     }
   }
+}
+
+.button {
+  width: 100%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+
+  border-radius: 4px;
+  border: 1px solid $color-neutral-light-gray;
+
+  background-color: $color-main-white;
+  padding: 15px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-neutral-light-gray;
+  }
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: darkblue; 
 }
